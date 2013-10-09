@@ -90,11 +90,11 @@ void inittexture (const char * filename, GLuint program) {
 	FILE * fp ; 
 //	GLint err ; 
 	assert(fp = fopen(filename,"rb")) ;
-	fscanf(fp,"%*s %*d %*d %*d%*c") ;
+	fscanf_s(fp, "%*s %*d %*d %*d%*c");
 	for (i = 0 ; i < 256 ; i++)
 		for (j = 0 ; j < 256 ; j++)
 			for (k = 0 ; k < 3 ; k++)
-				fscanf(fp,"%c",&(woodtexture[i][j][k])) ;
+				fscanf_s(fp, "%c" ,&(woodtexture[i][j][k]));
 	fclose(fp) ;  
 
 	// Set up Texture Coordinates
