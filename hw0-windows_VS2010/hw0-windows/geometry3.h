@@ -88,8 +88,11 @@ void initobject(GLuint object, GLfloat * vert, GLint sizevert, GLfloat * col, GL
 void inittexture (const char * filename, GLuint program) {
 	int i,j,k ;
 	FILE * fp ; 
-//	GLint err ; 
-	assert(fp = fopen(filename,"rb")) ;
+	int err; 
+
+	err = fopen_s(&fp, filename, "rb");
+	assert(err == 0);
+
 	fscanf_s(fp, "%*s %*d %*d %*d%*c");
 	for (i = 0 ; i < 256 ; i++)
 		for (j = 0 ; j < 256 ; j++)
